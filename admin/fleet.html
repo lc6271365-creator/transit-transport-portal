@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Manage organization transport vehicles and drivers."><meta name="theme-color" content="#f7f8fc">
+    <title>Vehicles &amp; Drivers | Transit Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="../auth.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script><script src="../supabase-config.js" defer></script><script src="../portal-backend.js" defer></script><script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">T</span><span><strong>Transit</strong><small>ORGANIZATION ADMIN</small></span></a><div class="topbar-right"><span class="connection-state" data-backend-status role="status" aria-live="polite"><i></i>Admin sign in required</span><span class="avatar">A</span></div></header>
+    <div class="app-shell"><aside class="sidebar"><div class="organization-chip"><span class="org-icon">O</span><span><strong>Your organization</strong><small>Admin workspace</small></span><span class="chevron">⌄</span></div><p class="nav-caption">WORKSPACE</p>
+      <nav class="side-nav" aria-label="Admin workspace"><a class="side-link" href="index.html" data-page-link><span class="nav-icon">⌂</span>Overview</a><a class="side-link" href="routes.html" data-page-link><span class="nav-icon">↗</span>Routes &amp; stops</a><a class="side-link" href="fleet.html" data-page-link><span class="nav-icon">▣</span>Vehicles &amp; drivers</a><a class="side-link" href="riders.html" data-page-link><span class="nav-icon">♙</span>Riders &amp; seats</a><a class="side-link" href="alerts.html" data-page-link><span class="nav-icon">◉</span>Safety alerts</a><a class="side-link" href="maintenance.html" data-page-link><span class="nav-icon">⚙</span>Fleet care</a></nav>
+      <div class="sidebar-footer"><span class="support-icon">?</span><span><strong>Setup preview</strong><small>Connect the backend to manage live data.</small></span></div>
+    </aside><main class="main-content">
+      <section class="page-heading"><div><p class="eyebrow">FLEET MANAGEMENT</p><h1>Vehicles &amp; drivers</h1><p class="heading-copy">Keep your vehicles and authorized drivers organized.</p></div><span class="preview-badge">Admin workspace</span></section>
+      <article class="surface section-card"><div class="card-heading"><div><p class="eyebrow">VEHICLE DIRECTORY</p><h2>Your fleet</h2></div></div>
+        <form class="member-create-form" data-create-vehicle>
+          <label class="account-field">Registration number<input name="registration_number" maxlength="30" required placeholder="e.g. DL 01 AB 1234"></label>
+          <label class="account-field">Vehicle label<input name="label" maxlength="80" placeholder="Optional name"></label>
+          <label class="account-field">Seat capacity<input name="seat_capacity" type="number" min="1" max="300" required></label>
+          <button class="preview-action" type="submit">Add vehicle</button>
+          <p class="account-status" data-vehicle-status role="status" aria-live="polite"></p>
+        </form>
+        <div class="data-placeholder" data-vehicle-list><strong>Sign in to load organization vehicles.</strong></div>
+      </article>
+      <article class="surface section-card"><p class="eyebrow">ROUTE OPERATIONS</p><h2>Assign a vehicle and driver</h2><p class="section-intro">Create a service period for this assignment; a driver can have one active route at a time.</p>
+        <form class="member-create-form" data-create-assignment>
+          <label class="account-field">Route<select name="route_id" required><option value="">Loading routes…</option></select></label>
+          <label class="account-field">Vehicle<select name="vehicle_id" required><option value="">Loading vehicles…</option></select></label>
+          <label class="account-field">Driver<select name="driver_user_id" required><option value="">Loading drivers…</option></select></label>
+          <label class="account-field">Service period name<input name="period_name" maxlength="80" required value="Current service period"></label>
+          <label class="account-field">Starts on<input name="starts_on" type="date" required></label>
+          <label class="account-field">Ends on<input name="ends_on" type="date" required></label>
+          <button class="preview-action" type="submit">Save assignment</button>
+          <p class="account-status" data-assignment-status role="status" aria-live="polite"></p>
+        </form>
+        <div class="data-placeholder" data-assignment-list><strong>Sign in to load route assignments.</strong></div>
+      </article>
+      <article class="surface section-card"><p class="eyebrow">AUTHORIZED TEAM</p><h2>Create a driver account</h2><p class="section-intro">Create a username and initial password, then share both privately with the driver.</p>
+        <form class="member-create-form" data-create-member data-role="driver">
+          <label class="account-field">Driver username<input name="username" minlength="2" maxlength="50" pattern="[A-Za-z0-9._-]+" required autocomplete="off"></label>
+          <label class="account-field">Initial password<input name="password" type="password" minlength="10" maxlength="128" required autocomplete="new-password"></label>
+          <button class="preview-action" type="submit">Create driver account</button>
+          <p class="account-status" data-member-status role="status" aria-live="polite"></p>
+        </form>
+      </article>
+      <article class="surface section-card"><p class="eyebrow">DRIVER ACCESS</p><h2>Remove or restore access</h2><p class="section-intro">Suspending a driver blocks sign-in and disables future route starts. End an active trip first.</p>
+        <form class="member-create-form" data-manage-member>
+          <label class="account-field">Driver username<input name="username" minlength="2" maxlength="50" required autocomplete="off"></label>
+          <label class="account-field">Access status<select name="status" required><option value="suspended">Suspend access</option><option value="active">Restore access</option></select></label>
+          <button class="preview-action" type="submit">Update driver access</button>
+          <p class="account-status" data-member-status role="status" aria-live="polite"></p>
+        </form>
+      </article>
+      <section class="feature-grid" aria-label="Fleet management features"><article class="surface feature-card"><span class="stat-icon blue">▣</span><h3>Vehicle capacity</h3><p>Record seat capacity to help plan assignments and loading.</p></article><article class="surface feature-card"><span class="stat-icon purple">↗</span><h3>Route assignment</h3><p>Connect vehicles and drivers to organization routes.</p></article><article class="surface feature-card"><span class="stat-icon amber">⚙</span><h3>Service reminders</h3><p>Keep maintenance schedules visible alongside fleet status.</p></article></section>
+      <p class="preview-disclaimer">Driver accounts must be created and active before they can be assigned a route.</p>
+    </main></div>
+  </body>
+</html>

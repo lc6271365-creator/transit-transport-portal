@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Organization transport operations overview.">
+    <meta name="theme-color" content="#f7f8fc">
+    <title>Overview | Transit Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+    <script src="../supabase-config.js" defer></script>
+    <script src="../portal-backend.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="Transit organization admin home"><span class="brand-mark" aria-hidden="true">T</span><span><strong>Transit</strong><small>ORGANIZATION ADMIN</small></span></a>
+      <div class="topbar-right"><span class="connection-state" data-backend-status role="status" aria-live="polite"><i aria-hidden="true"></i>Admin sign in required</span><a class="account-top-link" href="account.html">Admin sign in</a><span class="avatar" aria-hidden="true">A</span></div>
+    </header>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="organization-chip"><span class="org-icon" aria-hidden="true">O</span><span><strong>Your organization</strong><small>Admin workspace</small></span><span class="chevron" aria-hidden="true">⌄</span></div>
+        <p class="nav-caption">WORKSPACE</p>
+        <nav class="side-nav" aria-label="Admin workspace">
+          <a class="side-link" href="index.html" data-page-link><span class="nav-icon" aria-hidden="true">⌂</span>Overview</a>
+          <a class="side-link" href="routes.html" data-page-link><span class="nav-icon" aria-hidden="true">↗</span>Routes &amp; stops</a>
+          <a class="side-link" href="fleet.html" data-page-link><span class="nav-icon" aria-hidden="true">▣</span>Vehicles &amp; drivers</a>
+          <a class="side-link" href="riders.html" data-page-link><span class="nav-icon" aria-hidden="true">♙</span>Riders &amp; seats</a>
+          <a class="side-link" href="alerts.html" data-page-link><span class="nav-icon" aria-hidden="true">◉</span>Safety alerts</a>
+          <a class="side-link" href="maintenance.html" data-page-link><span class="nav-icon" aria-hidden="true">⚙</span>Fleet care</a>
+          <a class="side-link" href="plan.html" data-page-link><span class="nav-icon" aria-hidden="true">₹</span>Plan &amp; billing</a>
+        </nav>
+        <div class="sidebar-footer"><span class="support-icon" aria-hidden="true">?</span><span><strong>Setup preview</strong><small>Connect the backend to manage live data.</small></span></div>
+      </aside>
+      <main class="main-content">
+        <section class="page-heading"><div><p class="eyebrow">ORGANIZATION WORKSPACE</p><h1>Transport overview</h1><p class="heading-copy">A quick view of your organization’s routes, fleet, and riders.</p></div><span class="preview-badge"><i aria-hidden="true"></i>Admin workspace</span></section>
+        <section class="welcome-banner"><div class="welcome-text"><span class="banner-kicker">YOUR TRANSPORT OPERATIONS</span><h2>A clear view of every journey.</h2><p>Set up your transport service, then monitor operations from their dedicated pages.</p><a class="trial-link" href="account.html">Start 3-day free trial · ₹100 per bus/month →</a></div><div class="banner-art" aria-hidden="true"><span class="orbit orbit-one"></span><span class="orbit orbit-two"></span><span class="banner-bus">T</span><span class="banner-spark spark-one"></span><span class="banner-spark spark-two"></span></div></section>
+        <section class="stats-grid" aria-label="Transport setup summary">
+          <article class="surface stat-card"><div class="stat-top"><span class="stat-icon purple" aria-hidden="true">↗</span><span class="stat-context">Organization routes</span></div><strong class="stat-value" data-stat="routes">—</strong><span class="stat-note">Active routes</span></article>
+          <article class="surface stat-card"><div class="stat-top"><span class="stat-icon blue" aria-hidden="true">▣</span><span class="stat-context">Active vehicles</span></div><strong class="stat-value" data-stat="vehicles">—</strong><span class="stat-note">Fleet records</span></article>
+          <article class="surface stat-card"><div class="stat-top"><span class="stat-icon green" aria-hidden="true">♙</span><span class="stat-context">Registered riders</span></div><strong class="stat-value" data-stat="students">—</strong><span class="stat-note">Active student accounts</span></article>
+          <article class="surface stat-card"><div class="stat-top"><span class="stat-icon amber" aria-hidden="true">◉</span><span class="stat-context">Trips in progress</span></div><strong class="stat-value" data-stat="trips">—</strong><span class="stat-note">Live trip data</span></article>
+        </section>
+        <section class="overview-grid">
+          <article class="surface setup-card"><div class="section-heading"><div><p class="eyebrow">GETTING STARTED</p><h2>Set up your transport service</h2></div><span class="step-count">0 of 4</span></div>
+            <div class="setup-list">
+              <a class="setup-item setup-link" href="routes.html"><span class="step-number">1</span><span class="setup-copy"><strong>Create routes and stops</strong><small>Organize where vehicles travel.</small></span><span class="step-state">Not started →</span></a>
+              <a class="setup-item setup-link" href="fleet.html"><span class="step-number">2</span><span class="setup-copy"><strong>Add vehicles and drivers</strong><small>Build your fleet and team.</small></span><span class="step-state">Not started →</span></a>
+              <a class="setup-item setup-link" href="riders.html"><span class="step-number">3</span><span class="setup-copy"><strong>Add your rider roster</strong><small>Prepare organization member accounts.</small></span><span class="step-state">Not started →</span></a>
+              <a class="setup-item setup-link" href="riders.html"><span class="step-number">4</span><span class="setup-copy"><strong>Plan seats for a service period</strong><small>Allocate riders to routes and seats.</small></span><span class="step-state">Not started →</span></a>
+            </div>
+          </article>
+          <article class="surface action-card"><p class="eyebrow">OPERATIONS</p><h2>Keep your operations moving</h2><p class="action-intro">Separate workspaces keep everyday tasks easy to find.</p>
+            <a class="quick-action" href="alerts.html"><span class="quick-icon amber">◉</span><span><strong>Safety alerts</strong><small>Route and speed alert preview</small></span><span class="arrow">→</span></a>
+            <a class="quick-action" href="maintenance.html"><span class="quick-icon blue">⚙</span><span><strong>Fleet care</strong><small>Service and maintenance planning</small></span><span class="arrow">→</span></a>
+            <a class="quick-action" href="plan.html"><span class="quick-icon purple">₹</span><span><strong>Plan &amp; billing</strong><small>3-day trial · ₹100 per bus/month</small></span><span class="arrow">→</span></a>
+          </article>
+        </section>
+        <article class="surface section-card code-management-card">
+          <div class="card-heading"><div><p class="eyebrow">ORGANIZATION ACCESS</p><h2>Reference code</h2></div><button class="preview-action" type="button" data-rotate-code>Rotate code</button></div>
+          <p class="section-intro">Share the current code with your authorized members. Rotating it immediately invalidates the old code.</p>
+          <output class="reference-code-display" data-current-code hidden></output>
+          <button class="account-secondary code-copy-button" type="button" data-copy-current-code hidden>Copy reference code</button>
+          <p class="account-status" data-code-status role="status" aria-live="polite"></p>
+        </article>
+        <p class="preview-disclaimer">Payment collection is disabled; plan pricing is shown for presentation only.</p>
+      </main>
+    </div>
+  </body>
+</html>

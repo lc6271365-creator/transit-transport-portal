@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="View the Transit transport service trial and monthly bus pricing.">
+    <meta name="theme-color" content="#f7f8fc"><title>Plan &amp; Billing | Transit Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="../auth.css">
+    <script src="script.js" defer></script><script src="plan.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">T</span><span><strong>Transit</strong><small>ORGANIZATION ADMIN</small></span></a><div class="topbar-right"><span class="connection-state"><i></i>Preview · Billing not connected</span><a class="account-top-link" href="account.html">Admin sign in</a></div></header>
+    <div class="app-shell">
+      <aside class="sidebar"><div class="organization-chip"><span class="org-icon">O</span><span><strong>Your organization</strong><small>Admin workspace</small></span><span class="chevron">⌄</span></div><p class="nav-caption">WORKSPACE</p>
+        <nav class="side-nav" aria-label="Admin workspace"><a class="side-link" href="index.html"><span class="nav-icon">⌂</span>Overview</a><a class="side-link" href="routes.html"><span class="nav-icon">↗</span>Routes &amp; stops</a><a class="side-link" href="fleet.html"><span class="nav-icon">▣</span>Vehicles &amp; drivers</a><a class="side-link" href="riders.html"><span class="nav-icon">♙</span>Riders &amp; seats</a><a class="side-link" href="plan.html" aria-current="page"><span class="nav-icon">₹</span>Plan &amp; billing</a></nav>
+        <div class="sidebar-footer"><span class="support-icon">?</span><span><strong>Setup preview</strong><small>Razorpay billing is not connected.</small></span></div>
+      </aside>
+      <main class="main-content">
+        <section class="page-heading"><div><p class="eyebrow">SUBSCRIPTION</p><h1>Plan &amp; billing</h1><p class="heading-copy">Use your free trial, then pay according to the number of active buses.</p></div><span class="preview-badge"><i></i>Billing preview</span></section>
+        <section class="account-layout plan-layout">
+          <article class="surface section-card plan-card"><p class="eyebrow">ORGANIZATION PLAN</p><h2>Transport service</h2><div class="plan-price"><strong>₹100</strong><span>per bus / month</span></div><p class="section-intro">Start with 3 days free. No card is required to begin the trial.</p>
+            <label class="account-field plan-count">Estimate monthly cost
+              <input type="number" min="0" max="500" step="1" value="1" data-bus-count inputmode="numeric">
+            </label>
+            <p class="plan-estimate"><strong data-estimate>₹100</strong><span>estimated monthly total</span></p>
+            <p class="plan-note">Estimate uses the active bus count at the next billing cycle. Adding or removing a bus is reflected in the following cycle.</p>
+            <button class="preview-action" type="button" disabled title="Razorpay checkout requires server-side billing setup">Razorpay checkout not connected</button>
+          </article>
+          <aside class="surface section-card plan-card"><p class="eyebrow">YOUR TRIAL</p><h2>3-day free trial</h2><p class="section-intro">The trial begins after Admin email verification and organization creation.</p><ul class="account-list"><li>No payment information is needed during the trial.</li><li>Monthly fee is calculated using active registered buses.</li><li>Payment and automatic renewal are not enabled in this preview.</li></ul><p class="account-warning">Do not consider this page a paid subscription or a successful payment. Razorpay order creation, webhook verification, and renewal handling still need secure server configuration.</p></aside>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

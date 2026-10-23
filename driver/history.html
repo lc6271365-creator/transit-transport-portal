@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Review your completed driver trips."><meta name="theme-color" content="#f7f8fc">
+    <title>Trip History | Transit Driver</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script><script src="../supabase-config.js" defer></script><script src="../portal-backend.js" defer></script><script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar"><a class="brand" href="index.html" aria-label="Transit driver portal home"><span class="brand-mark">T</span><span><strong>Transit</strong><small>DRIVER PORTAL</small></span></a><div class="header-status" data-backend-status role="status" aria-live="polite"><span class="status-dot"></span>Sign in to load trip history</div><span class="profile-button" aria-hidden="true">D</span></header>
+    <main class="driver-shell">
+      <nav class="driver-nav" aria-label="Driver workspace"><a class="driver-nav-link" href="index.html" data-page-link>Today's trip</a><a class="driver-nav-link" href="history.html" data-page-link>Trip history</a><a class="driver-nav-link" href="safety.html" data-page-link>Safety</a></nav>
+      <section class="greeting-row"><div><p class="eyebrow">PAST JOURNEYS</p><h1>Trip history</h1><p class="greeting-copy">Review completed trips associated with your driver account.</p></div><span class="date-chip">Driver workspace</span></section>
+      <article class="surface driver-page-card"><div class="card-heading"><div><p class="eyebrow">COMPLETED TRIPS</p><h2>Recent activity</h2></div><span class="soft-badge" data-trip-count>No trip data</span></div>
+        <div class="driver-empty" data-driver-history-empty><strong>Your completed trips will appear here</strong><p>Completed trips associated with your driver account will appear here.</p></div>
+        <div class="driver-history-list" data-driver-history-list hidden></div>
+      </article>
+      <footer class="driver-footer"><span>Transit driver portal</span><span>Only trips assigned to your account are shown.</span></footer>
+    </main>
+  </body>
+</html>

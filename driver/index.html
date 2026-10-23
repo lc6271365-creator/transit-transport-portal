@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Driver portal for assigned routes and trip status.">
+    <meta name="theme-color" content="#f7f8fc">
+    <title>Transit | Driver Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="../map.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+    <script src="../supabase-config.js" defer></script>
+    <script src="../road-map.js" defer></script>
+    <script src="../portal-backend.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="Transit driver portal home">
+        <span class="brand-mark" aria-hidden="true">T</span>
+        <span><strong>Transit</strong><small>DRIVER PORTAL</small></span>
+      </a>
+      <a class="header-status" href="account.html" data-backend-status role="status" aria-live="polite">Driver sign in required</a>
+      <span class="profile-button" aria-hidden="true">D</span>
+    </header>
+
+    <main class="driver-shell">
+      <nav class="driver-nav" aria-label="Driver workspace">
+        <a class="driver-nav-link" href="index.html" data-page-link>Today's trip</a>
+        <a class="driver-nav-link" href="history.html" data-page-link>Trip history</a>
+        <a class="driver-nav-link" href="safety.html" data-page-link>Safety</a>
+      </nav>
+      <section class="greeting-row">
+        <div><p class="eyebrow">DRIVER WORKSPACE</p><h1>Your driving day</h1><p class="greeting-copy">Check your assigned route and trip status before heading out.</p></div>
+        <span class="date-chip"><span aria-hidden="true">◷</span> Live driver workspace</span>
+      </section>
+
+      <section class="driver-grid">
+        <div class="primary-column">
+          <article class="journey-banner">
+            <div class="banner-content">
+              <span class="banner-label">TODAY'S ASSIGNMENT</span>
+              <h2 data-assignment-heading>Your next journey starts here.</h2>
+              <p data-assignment-copy>Your organization’s route and vehicle will appear here when assigned to you.</p>
+              <span class="assignment-state" data-assignment-state><i aria-hidden="true"></i>Waiting for assignment</span>
+            </div>
+            <div class="banner-illustration" aria-hidden="true">
+              <span class="route-path"></span><span class="route-stop stop-a"></span><span class="route-stop stop-b"></span>
+              <span class="vehicle-illustration">T</span>
+            </div>
+          </article>
+
+          <article class="surface route-card">
+            <div class="card-heading"><div><p class="eyebrow">ASSIGNED ROUTE</p><h2>Route details</h2></div><span class="soft-badge">Not assigned</span></div>
+            <div class="route-empty">
+              <span class="empty-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M6 18.5 18 6M7 6h11v11" /><circle cx="6" cy="18" r="2" /></svg>
+              </span>
+              <h3>No route assigned yet</h3>
+              <p>Your organization Admin will assign your route and vehicle. Once assigned, the stop list and trip controls will appear here.</p>
+            </div>
+          </article>
+        </div>
+
+        <aside class="side-column">
+          <article class="surface status-card">
+            <div class="card-heading"><div><p class="eyebrow">TRIP STATUS</p><h2>Trip controls</h2></div><span class="status-dot large" aria-hidden="true"></span></div>
+            <div class="trip-state">
+              <span class="trip-state-icon" aria-hidden="true">Ⅱ</span>
+              <div><strong>No active trip</strong><small>Waiting for an assigned route</small></div>
+            </div>
+            <button class="start-button" type="button" data-start-trip disabled title="Trip controls available after assignment and backend setup">
+              <span aria-hidden="true">▶</span> Start trip
+            </button>
+            <button class="end-button" type="button" data-end-trip disabled>End trip</button>
+            <p class="trip-action-status" data-trip-action-status role="status" aria-live="polite" hidden></p>
+            <p class="control-note"><span aria-hidden="true">i</span> GPS sharing is active only during an assigned trip.</p>
+          </article>
+
+          <article class="surface gps-card">
+            <div class="card-heading"><div><p class="eyebrow">LOCATION SHARING</p><h2>GPS connection</h2></div><span class="gps-state"><i aria-hidden="true"></i>Not active</span></div>
+            <div id="driver-map" class="driver-map transit-map" aria-label="Map showing the driver's assigned route"></div>
+            <p class="gps-copy">Your location is only shared with riders on your assigned route while a trip is active.</p>
+            <div class="privacy-note"><span aria-hidden="true">✓</span><span>Location sharing is off</span></div>
+          </article>
+        </aside>
+      </section>
+
+      <section class="surface stops-card">
+        <div class="card-heading"><div><p class="eyebrow">JOURNEY PLAN</p><h2>Route stops</h2></div><span class="soft-badge">Appears after assignment</span></div>
+        <div class="stops-empty"><span class="stop-line" aria-hidden="true"></span><p data-stop-list>Your assigned route’s ordered stops and schedule will appear here.</p></div>
+      </section>
+
+      <footer class="driver-footer"><span>Transit driver portal</span><span>Keep this page open while sharing GPS during an active trip.</span></footer>
+    </main>
+  </body>
+</html>

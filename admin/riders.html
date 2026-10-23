@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Manage organization rider roster and seat allocations."><meta name="theme-color" content="#f7f8fc">
+    <title>Riders &amp; Seats | Transit Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="../auth.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script><script src="../supabase-config.js" defer></script><script src="../portal-backend.js" defer></script><script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">T</span><span><strong>Transit</strong><small>ORGANIZATION ADMIN</small></span></a><div class="topbar-right"><span class="connection-state" data-backend-status role="status" aria-live="polite"><i></i>Admin sign in required</span><span class="avatar">A</span></div></header>
+    <div class="app-shell"><aside class="sidebar"><div class="organization-chip"><span class="org-icon">O</span><span><strong>Your organization</strong><small>Admin workspace</small></span><span class="chevron">⌄</span></div><p class="nav-caption">WORKSPACE</p>
+      <nav class="side-nav" aria-label="Admin workspace"><a class="side-link" href="index.html" data-page-link><span class="nav-icon">⌂</span>Overview</a><a class="side-link" href="routes.html" data-page-link><span class="nav-icon">↗</span>Routes &amp; stops</a><a class="side-link" href="fleet.html" data-page-link><span class="nav-icon">▣</span>Vehicles &amp; drivers</a><a class="side-link" href="riders.html" data-page-link><span class="nav-icon">♙</span>Riders &amp; seats</a><a class="side-link" href="alerts.html" data-page-link><span class="nav-icon">◉</span>Safety alerts</a><a class="side-link" href="maintenance.html" data-page-link><span class="nav-icon">⚙</span>Fleet care</a></nav>
+      <div class="sidebar-footer"><span class="support-icon">?</span><span><strong>Setup preview</strong><small>Connect the backend to manage live data.</small></span></div>
+    </aside><main class="main-content">
+      <section class="page-heading"><div><p class="eyebrow">RIDER MANAGEMENT</p><h1>Riders &amp; seats</h1><p class="heading-copy">Organize the rider roster and plan transport for each service period.</p></div><span class="preview-badge">Admin workspace</span></section>
+      <article class="surface section-card"><p class="eyebrow">ORGANIZATION MEMBERS</p><h2>Create a student account</h2><p class="section-intro">Use the student’s roll number as their sign-in username and share the initial password privately. Allocate their seat separately.</p>
+        <form class="member-create-form" data-create-member data-role="student">
+          <label class="account-field">Student roll number<input name="username" minlength="2" maxlength="50" pattern="[A-Za-z0-9._-]+" required autocomplete="off"></label>
+          <label class="account-field">Initial password<input name="password" type="password" minlength="10" maxlength="128" required autocomplete="new-password"></label>
+          <button class="preview-action" type="submit">Create student account</button>
+          <p class="account-status" data-member-status role="status" aria-live="polite"></p>
+        </form>
+      </article>
+      <article class="surface section-card"><p class="eyebrow">STUDENT ACCESS</p><h2>Remove or restore access</h2><p class="section-intro">Suspending a student prevents sign-in and hides their organization transport details.</p>
+        <form class="member-create-form" data-manage-member>
+          <label class="account-field">Student roll number<input name="username" minlength="2" maxlength="50" required autocomplete="off"></label>
+          <label class="account-field">Access status<select name="status" required><option value="suspended">Suspend access</option><option value="active">Restore access</option></select></label>
+          <button class="preview-action" type="submit">Update student access</button>
+          <p class="account-status" data-member-status role="status" aria-live="polite"></p>
+        </form>
+      </article>
+      <article class="surface section-card"><div class="card-heading"><div><p class="eyebrow">SERVICE PERIOD PLANNING</p><h2>Route and seat allocations</h2></div></div>
+        <form class="member-create-form" data-create-allocation>
+          <label class="account-field">Route assignment<select name="route_assignment_id" required><option value="">Loading assignments…</option></select></label>
+          <label class="account-field">Student<select name="student_user_id" required><option value="">Loading students…</option></select></label>
+          <label class="account-field">Seat number<input name="seat_number" type="number" min="1" required></label>
+          <button class="preview-action" type="submit">Allocate seat</button>
+          <p class="account-status" data-allocation-status role="status" aria-live="polite"></p>
+        </form>
+        <div class="data-placeholder" data-allocation-list><strong>Sign in to load rider allocations.</strong></div>
+      </article>
+      <section class="feature-grid" aria-label="Rider management features"><article class="surface feature-card"><span class="stat-icon green">♙</span><h3>Organization roster</h3><p>Keep student accounts scoped to your organization.</p></article><article class="surface feature-card"><span class="stat-icon purple">▣</span><h3>Seat allocation</h3><p>Track route and seat assignments for each service period.</p></article><article class="surface feature-card"><span class="stat-icon blue">▤</span><h3>Digital passes</h3><p>Issue a secure student pass after a valid allocation is made.</p></article></section>
+      <p class="preview-disclaimer">Seat allocations are organization-only; students see only the assignment attached to their own account.</p>
+    </main></div>
+  </body>
+</html>

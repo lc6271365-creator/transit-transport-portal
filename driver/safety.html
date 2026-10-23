@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Driver safety information and emergency reporting preview."><meta name="theme-color" content="#f7f8fc">
+    <title>Safety | Transit Driver</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"><script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar"><a class="brand" href="index.html" aria-label="Transit driver portal home"><span class="brand-mark">T</span><span><strong>Transit</strong><small>DRIVER PORTAL</small></span></a><div class="header-status"><span class="status-dot"></span>Backend not connected</div><span class="profile-button" aria-hidden="true">D</span></header>
+    <main class="driver-shell">
+      <nav class="driver-nav" aria-label="Driver workspace"><a class="driver-nav-link" href="index.html" data-page-link>Today's trip</a><a class="driver-nav-link" href="history.html" data-page-link>Trip history</a><a class="driver-nav-link" href="safety.html" data-page-link>Safety</a></nav>
+      <section class="greeting-row"><div><p class="eyebrow">DRIVER SUPPORT</p><h1>Safety</h1><p class="greeting-copy">Know where to find help and report an issue during your shift.</p></div><span class="date-chip">Safety preview</span></section>
+      <article class="surface safety-card">
+        <div class="safety-banner"><span class="safety-icon" aria-hidden="true">!</span><div><h2>Emergency support is not connected</h2><p>This page is a design preview. It does not contact emergency services or your organization.</p></div></div>
+        <button class="sos-button" type="button" disabled title="SOS reporting is unavailable until a verified safety workflow is connected">SOS reporting unavailable</button>
+        <p class="safety-note">If you are in immediate danger, use your local emergency number. Do not rely on this preview for emergency response.</p>
+      </article>
+      <article class="surface driver-page-card safety-tools-card"><div class="card-heading"><div><p class="eyebrow">TRIP SAFETY</p><h2>Safety tools planned</h2></div></div>
+        <div class="safety-tool-row"><span class="safety-icon" aria-hidden="true">↗</span><span><strong>Report a route issue</strong><small>Share a service concern with authorized organization staff.</small></span></div>
+        <div class="safety-tool-row"><span class="safety-icon" aria-hidden="true">!</span><span><strong>Emergency escalation</strong><small>Notify the right contacts with trip context after a verified workflow is designed.</small></span></div>
+        <div class="safety-tool-row"><span class="safety-icon" aria-hidden="true">✓</span><span><strong>Location privacy</strong><small>Share location only during an active, authorized trip.</small></span></div>
+      </article>
+      <footer class="driver-footer"><span>Transit driver portal</span><span>No emergency reports or notifications are sent from this preview.</span></footer>
+    </main>
+  </body>
+</html>
