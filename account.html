@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Sign in to the Transit student portal using your organization and roll number.">
+    <meta name="theme-color" content="#f7f8fc"><title>Student Login | Transit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="auth.css">
+    <script src="supabase-config.js" defer></script><script src="auth.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header"><div class="header-inner"><a class="brand" href="index.html" aria-label="Transit student home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 18.5 18.5 5M7 5h11.5v11.5" /></svg></span><span class="brand-copy"><strong>Transit</strong><small>STUDENT PORTAL</small></span></a><a class="back-link" href="index.html">← Back to my ride</a></div></header>
+    <main class="account-shell">
+      <section class="account-layout">
+        <article class="account-card">
+          <p class="eyebrow">STUDENT SIGN IN</p><h1>Your transport account</h1>
+          <p class="account-lead">Use your organization code, school roll number, and the password provided by your Admin.</p>
+          <form class="account-form" data-account-form data-mode="student">
+            <label class="account-field">Organization reference code
+              <input type="text" name="organization_code" autocomplete="off" required placeholder="Enter your organization code">
+            </label>
+            <label class="account-field">Roll number
+              <input type="text" name="username" autocomplete="username" required placeholder="Your school roll number">
+            </label>
+            <label class="account-field">Password
+              <input type="password" name="password" autocomplete="current-password" required placeholder="Your account password">
+            </label>
+            <button class="account-submit" type="submit">Sign in securely</button>
+            <p class="account-status" data-account-status role="status" aria-live="polite"></p>
+          </form>
+          <p class="account-warning">A roll number and organization code alone are not enough to access the portal. Ask your Admin to create or reset your password and approve your seat.</p>
+        </article>
+        <aside class="account-aside">
+          <p class="eyebrow">STUDENT ACCOUNT</p><h2>Created and managed by your organization</h2>
+          <p>Your Admin adds your profile, checks your roll number, and assigns your route and seat.</p>
+          <ul class="account-list"><li>Your seat and trip details are visible only after Admin approval.</li><li>No Gmail address or email OTP is required for student sign-in.</li><li>Ask your Admin to reset your password if you lose access.</li></ul>
+        </aside>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="View your organization-issued digital transport pass.">
+    <meta name="theme-color" content="#f7f8fc">
+    <title>Bus Pass | Transit Student Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+    <script src="supabase-config.js" defer></script>
+    <script src="portal-backend.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="Transit student portal home">
+          <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 18.5 18.5 5M7 5h11.5v11.5" /></svg></span>
+          <span class="brand-copy"><strong>Transit</strong><small>STUDENT PORTAL</small></span>
+        </a>
+        <nav class="main-nav" aria-label="Student navigation">
+          <a class="nav-button" href="index.html" data-page-link><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3.5 8.25 10 3l6.5 5.25v7.5a1.25 1.25 0 0 1-1.25 1.25H4.75a1.25 1.25 0 0 1-1.25-1.25v-7.5Z" /><path d="M7.5 17v-5.5h5V17" /></svg>My ride</a>
+          <a class="nav-button" href="history.html" data-page-link><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3.4 7.5A6.75 6.75 0 1 1 3.5 12" /><path d="M3.4 3.75V7.5h3.75M10 6.25V10l2.5 1.5" /></svg>Ride history</a>
+          <a class="nav-button" href="pass.html" data-page-link><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3.5 5.5h13v9h-13z" /><path d="M6 8h8M6 11h3" /><circle cx="13.5" cy="11" r="1" /></svg>Bus pass</a>
+        </nav>
+        <span class="header-label"><span class="connection-dot" aria-hidden="true"></span>STUDENT VIEW</span>
+      </div>
+    </header>
+    <main class="page-shell inner-page">
+      <section class="welcome-row" aria-labelledby="page-title">
+        <div class="welcome-copy-block"><p class="eyebrow">DIGITAL TRAVEL PASS</p><h1 id="page-title">Your bus pass</h1><p class="welcome-copy">Your organization-issued pass for your assigned transport.</p></div>
+        <a class="back-link" href="index.html">← Back to my ride</a>
+      </section>
+      <section class="pass-layout" aria-label="Student bus pass">
+        <article class="pass-card surface">
+          <div class="pass-topline"><span class="pass-brand"><span class="pass-brand-mark">T</span>Transit</span><span class="pass-validity">ORGANIZATION PASS</span></div>
+          <div class="pass-profile"><span class="pass-avatar" aria-hidden="true">S</span><div><p class="eyebrow">STUDENT TRAVEL PASS</p><h2 data-pass-student>Pass details will appear here</h2><p data-pass-copy>Your assigned route and seat will be linked to your verified account.</p></div></div>
+          <div class="pass-divider"><span></span><span></span></div>
+          <div class="pass-data"><div><small>ROUTE</small><strong data-pass-route>Not assigned</strong></div><div><small>SEAT</small><strong data-pass-seat>Not assigned</strong></div><div><small>VALID FOR</small><strong data-pass-period>Service period</strong></div></div>
+          <div class="pass-qr-area"><div class="qr-placeholder" aria-hidden="true"><span class="qr-corner top-left"></span><span class="qr-corner top-right"></span><span class="qr-corner bottom-left"></span><span class="qr-center">T</span></div><div><strong>Digital pass unavailable</strong><p>A secure boarding code will appear here after your organization issues your pass.</p></div></div>
+        </article>
+        <aside class="pass-side surface"><span class="pass-side-icon" aria-hidden="true">✓</span><h2>Boarding verification</h2><p>Your organization can issue a digital pass for checking that a rider is on the correct route.</p><div class="notice-box"><span class="note-mark" aria-hidden="true">i</span><span>This preview does not contain a real QR code and cannot be used for boarding.</span></div><p class="backend-state" data-backend-status role="status" aria-live="polite">Sign in to load your pass</p></aside>
+      </section>
+    </main>
+    <footer class="site-footer"><span>Transit student portal</span><span>Digital pass preview · No boarding code issued</span></footer>
+  </body>
+</html>

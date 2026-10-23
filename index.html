@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Student transport portal for assigned routes, live vehicle tracking, and ride history."
+    >
+    <meta name="theme-color" content="#f7f8fc">
+    <title>Transit | Student Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="map.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+    <script src="supabase-config.js" defer></script>
+    <script src="road-map.js" defer></script>
+    <script src="portal-backend.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="Transit student portal home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M5 18.5 18.5 5M7 5h11.5v11.5" />
+            </svg>
+          </span>
+          <span class="brand-copy">
+            <strong>Transit</strong>
+            <small>STUDENT PORTAL</small>
+          </span>
+        </a>
+
+        <nav class="main-nav" aria-label="Student navigation">
+          <a class="nav-button is-active" href="index.html" data-page-link>
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M3.5 8.25 10 3l6.5 5.25v7.5a1.25 1.25 0 0 1-1.25 1.25H4.75a1.25 1.25 0 0 1-1.25-1.25v-7.5Z" />
+              <path d="M7.5 17v-5.5h5V17" />
+            </svg>
+            My ride
+          </a>
+          <a class="nav-button" href="history.html" data-page-link>
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M3.4 7.5A6.75 6.75 0 1 1 3.5 12" />
+              <path d="M3.4 3.75V7.5h3.75M10 6.25V10l2.5 1.5" />
+            </svg>
+            Ride history
+          </a>
+          <a class="nav-button" href="pass.html" data-page-link>
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M3.5 5.5h13v9h-13z" />
+              <path d="M6 8h8M6 11h3" />
+              <circle cx="13.5" cy="11" r="1" />
+            </svg>
+            Bus pass
+          </a>
+        </nav>
+
+        <span class="backend-state" data-backend-status role="status" aria-live="polite">Preview · Sign in to connect</span>
+        <a class="header-label account-header-link" href="account.html">
+          <span class="connection-dot" aria-hidden="true"></span>
+          Sign in
+        </a>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="welcome-row" aria-labelledby="welcome-title">
+        <div class="welcome-copy-block">
+          <p class="eyebrow">YOUR JOURNEY, IN ONE PLACE</p>
+          <h1 id="welcome-title">Student transport</h1>
+          <p class="welcome-copy">
+            See your assigned ride, follow the route, and check previous trips.
+          </p>
+        </div>
+        <span class="portal-pill">
+          <span class="portal-pill-mark" aria-hidden="true">
+            <svg viewBox="0 0 20 20" fill="none">
+              <path d="M3.75 10h12.5M10 3.75v12.5" />
+            </svg>
+          </span>
+          Student portal
+        </span>
+      </section>
+
+      <section class="view-panel is-visible" id="ride-view" aria-labelledby="ride-title">
+        <div class="content-grid">
+          <div class="left-column">
+            <article class="surface assignment-card">
+              <div class="card-heading">
+                <div>
+                  <p class="eyebrow">YOUR TRANSPORT</p>
+                  <h2 id="ride-title">Your ride</h2>
+                </div>
+                <span class="status-pill status-neutral">
+                  <span class="status-dot" aria-hidden="true"></span>
+                  <span data-ride-status>No assignment</span>
+                </span>
+              </div>
+
+              <div class="empty-state compact-empty">
+                <div class="empty-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M4 16.5V7.8C4 6.8 4.8 6 5.8 6h12.4c1 0 1.8.8 1.8 1.8v8.7M4 16.5h16M4 16.5v2m16-2v2M7 10h10M7 13h4" />
+                    <circle cx="7.5" cy="17.5" r="1.5" />
+                    <circle cx="16.5" cy="17.5" r="1.5" />
+                  </svg>
+                </div>
+                <h3>No ride information yet</h3>
+                <p>
+                  Your route and seat information will appear here when it is ready.
+                </p>
+                <div class="assignment-note">
+                  <span class="note-mark" aria-hidden="true">i</span>
+                  <span>Your organization manages your transport details.</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="surface stops-card">
+              <div class="card-heading">
+                <div>
+                  <p class="eyebrow">YOUR ROUTE</p>
+                  <h2>Stops</h2>
+                </div>
+                <span class="muted-label">Shown after assignment</span>
+              </div>
+              <div class="stops-empty">
+                <span class="stop-marker" aria-hidden="true"></span>
+                <p>Your assigned route stops will appear here.</p>
+              </div>
+            </article>
+
+            <article class="surface eta-card" aria-labelledby="eta-title">
+              <div class="card-heading">
+                <div>
+                  <p class="eyebrow">STOP ARRIVAL</p>
+                  <h2 id="eta-title">Next stop estimate</h2>
+                </div>
+                <span class="status-pill status-neutral">Not available</span>
+              </div>
+              <p class="eta-copy">Stop-by-stop arrival estimates will appear when your assigned vehicle is sharing live GPS.</p>
+              <div class="eta-placeholder"><span class="eta-clock" aria-hidden="true">◷</span><span><strong>ETA unavailable</strong><small>No active trip or location data</small></span></div>
+            </article>
+          </div>
+
+          <article class="surface map-card" aria-labelledby="map-title">
+            <div class="card-heading map-heading">
+              <div>
+                <p class="eyebrow">LIVE VEHICLE LOCATION</p>
+                <h2 id="map-title">Live tracking</h2>
+              </div>
+              <span class="status-pill status-neutral">
+                <span class="status-dot" aria-hidden="true"></span>
+                No active trip
+              </span>
+            </div>
+
+            <div class="map-placeholder live-map-shell" role="status">
+              <div id="student-map" class="transit-map" aria-label="Map showing your assigned bus route"></div>
+              <div class="map-message" data-map-empty>
+                <span class="map-pin" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z" />
+                    <circle cx="12" cy="10" r="2.25" />
+                  </svg>
+                </span>
+                <h3>Your live map will appear here</h3>
+                <p>
+                  When your assigned driver starts a trip, the bus location and route will show here.
+                </p>
+              </div>
+              <span class="map-attribution" data-map-attribution>OpenStreetMap · Waiting for an active trip</span>
+            </div>
+
+            <div class="map-footer">
+              <span class="map-legend">
+                <i class="legend-dot" aria-hidden="true"></i>
+                Assigned vehicle
+              </span>
+              <span>Location updates when a trip is active</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <span>Transit student portal</span>
+      <span>Organization routes and trip details appear here.</span>
+    </footer>
+  </body>
+</html>

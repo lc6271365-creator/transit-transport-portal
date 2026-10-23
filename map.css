@@ -1,0 +1,61 @@
+.transit-map {
+  width: 100%;
+  min-height: 100%;
+  background: #edf1f5;
+}
+
+.live-map-shell {
+  isolation: isolate;
+}
+
+.live-map-shell .transit-map {
+  position: absolute;
+  inset: 0;
+}
+
+.live-map-shell .map-message {
+  position: absolute;
+  z-index: 401;
+  top: 50%;
+  left: 50%;
+  width: min(360px, calc(100% - 32px));
+  border: 1px solid rgba(226, 231, 240, .9);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .94);
+  box-shadow: 0 8px 28px rgba(24, 35, 57, .12);
+  transform: translate(-50%, -50%);
+  backdrop-filter: blur(8px);
+}
+
+.map-message[hidden] {
+  display: none;
+}
+
+.transit-bus-marker {
+  border: 0;
+  background: transparent;
+}
+
+.transit-bus-marker img {
+  display: block;
+  width: 42px;
+  height: 42px;
+  filter: drop-shadow(0 4px 6px rgba(23, 32, 51, .28));
+}
+
+.leaflet-container {
+  font-family: "DM Sans", sans-serif;
+}
+
+.leaflet-popup-content {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.driver-map {
+  min-height: 195px;
+  margin: 12px 0 5px;
+  overflow: hidden;
+  border: 1px solid #edf0f4;
+  border-radius: 12px;
+}
