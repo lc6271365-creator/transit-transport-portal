@@ -133,7 +133,7 @@ if (form) {
       sessionStorage.setItem("transit_access_token", result.access_token);
       sessionStorage.setItem("transit_refresh_token", result.refresh_token);
       sessionStorage.setItem("transit_organization_id", result.organization_id);
-      window.location.assign(mode === "student" ? "../index.html" : "../driver/index.html");
+      window.location.assign(mode === "student" ? "index.html" : "driver/index.html");
     } catch (error) {
       setStatus(error.message, "error");
     } finally {
